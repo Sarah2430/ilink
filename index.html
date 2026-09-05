@@ -1,11 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iLink - Software & IT Services</title>
+<style>
+/* Reset & Base Styles */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background-color: #050716; /* Dark background matching image */
+color: #ffffff;
+overflow-x: hidden;
+}
+
+/* Header & Navigation */
+.navbar-container {
+width: 100%;
+padding: 24px 60px;
+background-color: #050716;
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1400px;
+margin: 0 auto;
+}
+
+/* Logo Styling */
+.logo {
+font-size: 28px;
+font-weight: 700;
+color: #ffffff;
+text-decoration: none;
+letter-spacing: -0.5px;
+}
+
+.logo-i {
+color: #4378ff;
+}
+
+/* Navigation Links */
+.nav-links {
+display: flex;
+list-style: none;
+gap: 32px;
+}
+
+.nav-link {
+position: relative;
+text-decoration: none;
+color: #a0a5b5;
+font-size: 15px;
+font-weight: 500;
+transition: color 0.3s ease;
+padding-bottom: 6px;
+}
+
+.nav-link:hover, .nav-link.active {
+color: #ffffff;
+}
+
+.nav-link.active::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 2px;
+background-color: #4378ff;
+border-radius: 2px;
+}
+
+/* Get in Touch Button */
+.btn-touch {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+padding: 8px 18px;
+border-radius: 9999px; /* Perfect pill shape */
+border: 1px solid rgba(255, 255, 255, 0.18);
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+color: #ffffff;
+font-size: 13px;
+font-weight: 400;
+text-decoration: none;
+line-height: 1;
+white-space: nowrap;
+transition: all 0.25s ease;
+}
+
+.btn-touch .arrow {
+font-size: 13px;
+color: rgba(255, 255, 255, 0.6);
+display: inline-block;
+transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-touch:hover {
+border-color: rgba(67, 120, 255, 0.6);
+background: rgba(67, 120, 255, 0.1);
+box-shadow: 0 0 12px rgba(67, 120, 255, 0.25);
+}
+
+.btn-touch:hover .arrow {
+color: #ffffff;
+transform: translate(2px, -2px);
+}
+
+/* Main Hero Layout (Flexbox Side-by-Side) */
+.hero-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+max-width: 1400px;
+margin: 0 auto;
+padding: 40px 60px 0 60px;
+gap: 40px;
+}
+
+/* Left Content Column */
+.hero-content {
+flex: 1;
+max-width: 620px;
+}
+
+/* Top Badge */
+.badge-software {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 6px 14px;
+border-radius: 9999px;
+background: rgba(30, 58, 138, 0.15);
+border: 1px solid rgba(59, 130, 246, 0.3);
+color: #60a5fa;
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.8px;
+text-transform: uppercase;
+margin-bottom: 24px;
+}
+
+.badge-software .dot {
+color: #3b82f6;
+font-size: 14px;
+line-height: 1;
+}
+
+/* Main Heading */
+.build h1 {
+font-size: 25px;
+font-weight: 700;
+line-height: 1.1;
+letter-spacing: -1px;
+color: #ffffff;
+}
+
+.connect {
+color: #4378ff;
+}
+
+/* Subtitle Text */
+.hero-description {
+margin-top: 24px;
+color: #a0a5b5;
+font-size: 16px;
+line-height: 1.6;
+max-width: 500px;
+}
+
+/* Call to Action Buttons */
+.hero-buttons {
+display: flex;
+align-items: center;
+gap: 16px;
+margin-top: 15px;
+}
+
+.btn-primary {
+background-color: #4378ff;
+color: #ffffff;
+width:100px;
+padding:7px;
+border-radius: 5px;
+text-decoration: none;
+text-align:center;
+font-size: 10px;
+}
+
+.btn-primary:hover {
+background-color: #3364e0;
+}
+
+.btn-secondary {
+background-color: transparent;
+color: #a0a5b5;
+width:100px;
+border: 1px solid rgba(255, 255, 255, 0.15);
+padding: 7px;
+border-radius: 5px;
+text-decoration: none;
+text-align:center;
+font-size: 10px;
+}
+
+.btn-secondary:hover {
+color: #ffffff;
+border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Right Laptop Image Column */
+.hero-image-container {
+flex: 1;
+display: flex;
+justify-content: flex-end;
+}
+
+.hero-image-container img {
+width: 100%;
+max-width: 650px;
+height: auto;
+display: block;
+object-fit: contain;
+}
+
+/* Services Panel Outer Container */
+.services-panel-container {
+max-width: 1400px;
+margin: 60px auto 40px auto;
+padding: 0 60px;
+}
+
+/* Glassmorphism Outer Box containing all 4 items */
+.services-panel {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 24px;
+
+padding: 32px 36px;
+border-radius: 16px;
+
+/* Subtle dark translucent fill & soft border */
+background: rgba(255, 255, 255, 0.02);
+border: 1px solid rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+}
+
+/* Individual Card Item */
+.service-card {
+display: flex;
+align-items: flex-start;
+gap: 16px;
+padding: 8px;
+transition: transform 0.25s ease;
+}
+
+.service-card:hover {
+transform: translateY(-2px);
+}
+
+/* Icon Container */
+.service-icon {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+width: 42px;
+height: 42px;
+border-radius: 10px;
+background: rgba(67, 120, 255, 0.1);
+}
+
+/* Text Content Styling */
+.service-text h3 {
+color: #ffffff;
+font-size: 15px;
+font-weight: 600;
+line-height: 1.3;
+margin-bottom: 6px;
+}
+
+.service-text p {
+color: #8a8f9e;
+font-size: 13px;
+line-height: 1.5;
+font-weight: 400;
+}
+
+/* Responsive adjustment for tablet/mobile screens */
+@media (max-width: 1024px) {
+.services-panel {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 640px) {
+.services-panel {
+grid-template-columns: 1fr;
+}
+}
+
+
+</style>
 </head>
 <body>
-    <script src="script.js"></script>
+
+<!-- Header Navigation -->
+<header class="navbar-container">
+<nav class="navbar">
+<a href="#" class="logo"><span class="logo-i">i</span>link</a>
+<ul class="nav-links">
+<li><a href="#" class="nav-link active">Home</a></li>
+<li><a href="#" class="nav-link">About Us</a></li>
+<li><a href="#" class="nav-link">Services</a></li>
+<li><a href="#" class="nav-link">Why Choose ilink</a></li>
+<li><a href="#" class="nav-link">Contact</a></li>
+</ul>
+<a href="#" class="btn-touch">
+Get in Touch <span class="arrow">↗</span>
+</a>
+</nav>
+</header>
+
+<!-- Main Hero Section -->
+<section class="hero-container">
+<!-- Left Side: Text & Buttons -->
+<div class="hero-content">
+<div class="badge-software">
+<span class="dot">•</span> SOFTWARE & IT SERVICES
+</div>
+
+<div class="build">
+<h1>We build<br>digital solutions<br>that <span class="connect">connect.</span></h1>
+</div>
+
+<p class="hero-description">
+iLink delivers innovative software and IT services that help businesses grow, scale and lead in a digital world.
+</p>
+
+<div class="hero-buttons">
+<a href="#" class="btn-primary">Our Services <span class="btn-arrow">&rarr;</span></a>
+<a href="#" class="btn-secondary">View Our Work <span class="btn-arrow">&rarr;</span></a>
+</div>
+</div>
+
+<!-- Right Side: Laptop Image -->
+<div class="hero-image-container">
+<img src="image.jpg" alt="iLink Software & IT Services Laptop Graphic">
+</div>
+</section>
+
+<!-- Services Feature Grid Section -->
+<section class="services-panel-container">
+<div class="services-panel">
+
+<!-- Card 1: Custom Software Development -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+<line x1="8" y1="21" x2="16" y2="21"></line>
+<line x1="12" y1="17" x2="12" y2="21"></line>
+</svg>
+</div>
+<div class="service-text">
+<h3>Custom Software Development</h3>
+<p>We build scalable, high-performance applications tailored to your business.</p>
+</div>
+</div>
+
+<!-- Card 2: Cloud & DevOps Solutions -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+</svg>
+</div>
+<div class="service-text">
+<h3>Cloud & DevOps Solutions</h3>
+<p>Modernize your infrastructure and accelerate delivery with the cloud.</p>
+</div>
+</div>
+
+<!-- Card 3: Cybersecurity Services -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+</svg>
+</div>
+<div class="service-text">
+<h3>Cybersecurity Services</h3>
+<p>Protect your business with proactive security and risk management.</p>
+</div>
+</div>
+
+<!-- Card 4: IT Consulting & Support -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="18" y1="20" x2="18" y2="10"></line>
+<line x1="12" y1="20" x2="12" y2="4"></line>
+<line x1="6" y1="20" x2="6" y2="14"></line>
+</svg>
+</div>
+<div class="service-text">
+<h3>IT Consulting & Support</h3>
+<p>Expert guidance and support to optimize your IT strategy.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<script src="script.js"></script>
 </body>
 </html>
+
+
