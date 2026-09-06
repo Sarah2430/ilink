@@ -64,8 +64,9 @@ transition: color 0.3s ease;
 padding-bottom: 6px;
 }
 
-.nav-link:hover, .nav-link.active {
-color: #ffffff;
+ .nav-link.active {
+color: #2563eb;
+font-weight: 600;
 }
 
 .nav-link.active::after {
@@ -84,15 +85,15 @@ border-radius: 2px;
 display: inline-flex;
 align-items: center;
 justify-content: center;
-gap: 8px;
-padding: 8px 18px;
-border-radius: 9999px; /* Perfect pill shape */
-border: 1px solid rgba(255, 255, 255, 0.18);
+gap:8px;
+padding:5px;
+border-radius: 5px; /* Perfect pill shape */
+border: 1px solid blue;
 background: rgba(255, 255, 255, 0.03);
 backdrop-filter: blur(8px);
 -webkit-backdrop-filter: blur(8px);
 color: #ffffff;
-font-size: 13px;
+font-size: 10px;
 font-weight: 400;
 text-decoration: none;
 line-height: 1;
@@ -102,7 +103,7 @@ transition: all 0.25s ease;
 
 .btn-touch .arrow {
 font-size: 13px;
-color: rgba(255, 255, 255, 0.6);
+color: blue;
 display: inline-block;
 transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -322,11 +323,11 @@ grid-template-columns: 1fr;
 <nav class="navbar">
 <a href="#" class="logo"><span class="logo-i">i</span>link</a>
 <ul class="nav-links">
-<li><a href="#" class="nav-link active">Home</a></li>
-<li><a href="#" class="nav-link">About Us</a></li>
-<li><a href="#" class="nav-link">Services</a></li>
-<li><a href="#" class="nav-link">Why Choose ilink</a></li>
-<li><a href="#" class="nav-link">Contact</a></li>
+<li><a href="index.html" class="nav-link active">Home</a></li>
+<li><a href="about.html" class="nav-link">About Us</a></li>
+<li><a href="services.html" class="nav-link">Services</a></li>
+<li><a href="why-us.html" class="nav-link">Why Choose ilink</a></li>
+<li><a href="contact.html" class="nav-link">Contact</a></li>
 </ul>
 <a href="#" class="btn-touch">
 Get in Touch <span class="arrow">↗</span>
