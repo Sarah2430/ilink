@@ -3,68 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iLink - Software & IT Services</title>
+<title>iLink - Software &amp; IT Services</title>
+<meta name="description" content="iLink delivers innovative software and IT services that help businesses grow, scale and lead in a digital world.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Reset & Base Styles */
+/* ============================================================
+   PAGE WIDTH
+   One place to tune how much of the browser the site fills.
+   --page-pad scales with the viewport, so margins breathe on
+   wide monitors and tighten up on phones.
+   ============================================================ */
+:root {
+--page-max: 1600px;
+--page-pad: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 * {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
 }
 
 body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background-color: #050716; /* Dark background matching image */
-color: #ffffff;
+background-color: #f8fafc;
+color: #0f172a;
+line-height: 1.5;
 overflow-x: hidden;
 }
 
-/* Header & Navigation */
+a { text-decoration: none; color: inherit; }
+
+/* Sections sit clear of the sticky navbar when scrolled to */
+.scroll-section {
+scroll-margin-top: 90px;
+}
+
+/* ============================================================
+   NAVBAR (shared with about.html)
+   ============================================================ */
 .navbar-container {
-width: 100%;
-padding: 24px 60px;
-background-color: #050716;
+background-color: #050c1a;
+padding: 1.2rem var(--page-pad);
+position: sticky;
+top: 0;
+z-index: 100;
 }
 
 .navbar {
+max-width: var(--page-max);
+margin: 0 auto;
 display: flex;
 justify-content: space-between;
 align-items: center;
-max-width: 1400px;
-margin: 0 auto;
 }
 
-/* Logo Styling */
 .logo {
-font-size: 28px;
-font-weight: 700;
 color: #ffffff;
-text-decoration: none;
-letter-spacing: -0.5px;
+display: flex;
+flex-direction: column;
+font-size: 1.5rem;
+font-weight: 800;
+line-height: 1;
 }
 
 .logo-i {
-color: #4378ff;
+color: #2563eb;
+display: inline;
 }
 
-/* Navigation Links */
+.logo-sub {
+display: block;
+font-size: 0.5rem;
+letter-spacing: 1.2px;
+color: #94a3b8;
+font-weight: 600;
+margin-top: 3px;
+}
+
 .nav-links {
 display: flex;
 list-style: none;
-gap: 32px;
+gap: 1.25rem;
+align-items: center;
+white-space: nowrap;
 }
 
 .nav-link {
-position: relative;
-text-decoration: none;
-color: #a0a5b5;
-font-size: 15px;
+color: #cbd5e1;
+font-size: 0.85rem;
 font-weight: 500;
-transition: color 0.3s ease;
-padding-bottom: 6px;
+padding-bottom: 4px;
+position: relative;
+transition: color 0.2s ease;
 }
 
- .nav-link.active {
+.nav-link:hover {
+color: #ffffff;
+}
+
+.nav-link.active {
 color: #2563eb;
 font-weight: 600;
 }
@@ -76,67 +126,57 @@ bottom: 0;
 left: 0;
 width: 100%;
 height: 2px;
-background-color: #4378ff;
+background-color: #2563eb;
 border-radius: 2px;
 }
 
-/* Get in Touch Button */
 .btn-touch {
+background-color: #2563eb;
+color: #ffffff;
+padding: 5px;
+border-radius: 6px;
+font-size: 10px;
+font-weight: 600;
 display: inline-flex;
 align-items: center;
-justify-content: center;
-gap:8px;
-padding:5px;
-border-radius: 5px; /* Perfect pill shape */
-border: 1px solid blue;
-background: rgba(255, 255, 255, 0.03);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
+margin-left: 15px;
+gap: 6px;
+transition: background-color 0.2s ease;
+}
+
+.btn-touch:hover, .btn-bright:hover {
+background-color: #1d4ed8;
+}
+
+.arrow {
+width: 14px;
+height: 14px;
+}
+
+/* ============================================================
+   HOME — DARK HERO
+   ============================================================ */
+.hero-wrapper {
+background-color: #050716;
 color: #ffffff;
-font-size: 10px;
-font-weight: 400;
-text-decoration: none;
-line-height: 1;
-white-space: nowrap;
-transition: all 0.25s ease;
+padding-bottom: 40px;
 }
 
-.btn-touch .arrow {
-font-size: 13px;
-color: blue;
-display: inline-block;
-transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.btn-touch:hover {
-border-color: rgba(67, 120, 255, 0.6);
-background: rgba(67, 120, 255, 0.1);
-box-shadow: 0 0 12px rgba(67, 120, 255, 0.25);
-}
-
-.btn-touch:hover .arrow {
-color: #ffffff;
-transform: translate(2px, -2px);
-}
-
-/* Main Hero Layout (Flexbox Side-by-Side) */
 .hero-container {
 display: flex;
 align-items: center;
 justify-content: space-between;
-max-width: 1400px;
+max-width: var(--page-max);
 margin: 0 auto;
-padding: 40px 60px 0 60px;
+padding: 40px var(--page-pad) 0 var(--page-pad);
 gap: 40px;
 }
 
-/* Left Content Column */
 .hero-content {
 flex: 1;
-max-width: 620px;
+max-width: 720px;
 }
 
-/* Top Badge */
 .badge-software {
 display: inline-flex;
 align-items: center;
@@ -159,7 +199,6 @@ font-size: 14px;
 line-height: 1;
 }
 
-/* Main Heading */
 .build h1 {
 font-size: 25px;
 font-weight: 700;
@@ -172,7 +211,6 @@ color: #ffffff;
 color: #4378ff;
 }
 
-/* Subtitle Text */
 .hero-description {
 margin-top: 24px;
 color: #a0a5b5;
@@ -181,7 +219,6 @@ line-height: 1.6;
 max-width: 500px;
 }
 
-/* Call to Action Buttons */
 .hero-buttons {
 display: flex;
 align-items: center;
@@ -192,11 +229,10 @@ margin-top: 15px;
 .btn-primary {
 background-color: #4378ff;
 color: #ffffff;
-width:100px;
-padding:7px;
+width: 100px;
+padding: 7px;
 border-radius: 5px;
-text-decoration: none;
-text-align:center;
+text-align: center;
 font-size: 10px;
 }
 
@@ -207,12 +243,11 @@ background-color: #3364e0;
 .btn-secondary {
 background-color: transparent;
 color: #a0a5b5;
-width:100px;
+width: 100px;
 border: 1px solid rgba(255, 255, 255, 0.15);
 padding: 7px;
 border-radius: 5px;
-text-decoration: none;
-text-align:center;
+text-align: center;
 font-size: 10px;
 }
 
@@ -221,7 +256,6 @@ color: #ffffff;
 border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Right Laptop Image Column */
 .hero-image-container {
 flex: 1;
 display: flex;
@@ -230,37 +264,32 @@ justify-content: flex-end;
 
 .hero-image-container img {
 width: 100%;
-max-width: 650px;
+max-width: 780px;
 height: auto;
 display: block;
 object-fit: contain;
 }
 
-/* Services Panel Outer Container */
-.services-panel-container {
-max-width: 1400px;
-margin: 60px auto 40px auto;
-padding: 0 60px;
+/* ---- Glassmorphism highlights panel (4 items, inside the dark hero) ---- */
+.highlights-container {
+max-width: var(--page-max);
+margin: 60px auto 0 auto;
+padding: 0 var(--page-pad);
 }
 
-/* Glassmorphism Outer Box containing all 4 items */
-.services-panel {
+.highlights-panel {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
 gap: 24px;
-
 padding: 32px 36px;
 border-radius: 16px;
-
-/* Subtle dark translucent fill & soft border */
 background: rgba(255, 255, 255, 0.02);
 border: 1px solid rgba(255, 255, 255, 0.08);
 backdrop-filter: blur(12px);
 -webkit-backdrop-filter: blur(12px);
 }
 
-/* Individual Card Item */
-.service-card {
+.highlight-card {
 display: flex;
 align-items: flex-start;
 gap: 16px;
@@ -268,12 +297,11 @@ padding: 8px;
 transition: transform 0.25s ease;
 }
 
-.service-card:hover {
+.highlight-card:hover {
 transform: translateY(-2px);
 }
 
-/* Icon Container */
-.service-icon {
+.highlight-icon {
 display: flex;
 align-items: center;
 justify-content: center;
@@ -284,8 +312,7 @@ border-radius: 10px;
 background: rgba(67, 120, 255, 0.1);
 }
 
-/* Text Content Styling */
-.service-text h3 {
+.highlight-text h3 {
 color: #ffffff;
 font-size: 15px;
 font-weight: 600;
@@ -293,54 +320,536 @@ line-height: 1.3;
 margin-bottom: 6px;
 }
 
-.service-text p {
+.highlight-text p {
 color: #8a8f9e;
 font-size: 13px;
 line-height: 1.5;
 font-weight: 400;
 }
 
-/* Responsive adjustment for tablet/mobile screens */
+/* ============================================================
+   LIGHT PAGE BODY (Services + Why Us)
+   ============================================================ */
+.main-container {
+max-width: var(--page-max);
+margin: 0 auto;
+padding: 4rem var(--page-pad);
+display: flex;
+flex-direction: column;
+gap: 4rem;
+}
+
+.section-header-center {
+text-align: center;
+margin-bottom: 1rem;
+}
+
+.section-tag-blue {
+color: #2563eb;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 1.2px;
+margin-bottom: 0.5rem;
+display: block;
+}
+
+.section-header-center h2 {
+font-size: 2.25rem;
+font-weight: 800;
+color: #0f172a;
+}
+
+.section-header-center .section-lead {
+color: #64748b;
+font-size: 0.95rem;
+max-width: 620px;
+margin: 1rem auto 0 auto;
+line-height: 1.6;
+}
+
+.center-line {
+width: 40px;
+height: 3px;
+background-color: #2563eb;
+border-radius: 2px;
+margin: 0.5rem auto 0 auto;
+}
+
+/* ---- SERVICES: 8-card grid ---- */
+.services-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.25rem;
+margin-top: 1.5rem;
+}
+
+.service-card {
+background-color: #ffffff;
+border-radius: 12px;
+padding: 1.5rem;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+border: 1px solid #f1f5f9;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.service-icon {
+background-color: #eff6ff;
+width: 44px;
+height: 44px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 1rem;
+}
+
+.service-icon svg {
+width: 22px;
+height: 22px;
+}
+
+.service-card h3 {
+font-size: 1.05rem;
+font-weight: 700;
+color: #0f172a;
+margin-bottom: 0.4rem;
+line-height: 1.3;
+}
+
+.card-line {
+width: 24px;
+height: 2px;
+background-color: #2563eb;
+margin-bottom: 0.85rem;
+border-radius: 2px;
+}
+
+.service-card p {
+font-size: 0.82rem;
+color: #64748b;
+line-height: 1.5;
+}
+
+/* ---- WHY US: 6-feature grid ---- */
+.features-grid {
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+gap: 1rem;
+margin-top: 1.5rem;
+}
+
+.feature-card {
+background-color: transparent;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+padding: 1rem 0.5rem;
+position: relative;
+}
+
+.feature-card:not(:last-child)::after {
+content: '';
+position: absolute;
+right: -0.5rem;
+top: 15%;
+height: 70%;
+width: 1px;
+background-color: #e2e8f0;
+}
+
+.feature-icon {
+background-color: #eff6ff;
+width: 52px;
+height: 52px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 1.25rem;
+}
+
+.feature-icon svg {
+width: 24px;
+height: 24px;
+}
+
+.feature-card h3 {
+font-size: 0.95rem;
+font-weight: 700;
+color: #0f172a;
+margin-bottom: 0.6rem;
+}
+
+.feature-card p {
+font-size: 0.78rem;
+color: #64748b;
+line-height: 1.45;
+}
+
+/* ---- WHY US: dark stats banner ---- */
+.stats-banner {
+background: linear-gradient(135deg, #030816 0%, #081a3e 100%);
+border-radius: 12px;
+padding: 2.5rem 2rem;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.5rem;
+color: #ffffff;
+box-shadow: 0 10px 30px rgba(5, 12, 26, 0.15);
+margin-top: 2.5rem;
+}
+
+.stat-item {
+display: flex;
+align-items: center;
+gap: 1.25rem;
+position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+content: '';
+position: absolute;
+right: 0;
+top: 10%;
+height: 80%;
+width: 1px;
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-icon {
+width: 42px;
+height: 42px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.stat-icon svg {
+width: 32px;
+height: 32px;
+}
+
+.stat-info h3 {
+font-size: 1.85rem;
+font-weight: 800;
+color: #ffffff;
+line-height: 1;
+margin-bottom: 0.4rem;
+}
+
+.stat-info .stat-label {
+font-size: 0.8rem;
+font-weight: 700;
+color: #ffffff;
+margin-bottom: 0.2rem;
+}
+
+.stat-info .stat-desc {
+font-size: 0.72rem;
+color: #94a3b8;
+line-height: 1.3;
+}
+
+/* ---- CTA BANNER ---- */
+.cta-banner {
+background-color: #eff6ff;
+border-radius: 12px;
+padding: 1.5rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.cta-left {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.cta-icon {
+background-color: #2563eb;
+width: 44px;
+height: 44px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.cta-icon svg {
+width: 20px;
+height: 20px;
+}
+
+.cta-left h3 {
+color: #0f172a;
+font-size: 1.1rem;
+font-weight: 700;
+}
+
+.cta-left p {
+color: #64748b;
+font-size: 0.85rem;
+}
+
+/* ============================================================
+   FOOTER (shared with about.html)
+   ============================================================ */
+.footer {
+background-color: #030712;
+color: #94a3b8;
+padding: 50px var(--page-pad) 40px var(--page-pad);
+border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+max-width: var(--page-max);
+margin: 0 auto;
+display: grid;
+grid-template-columns: 2fr 1fr 1fr 1.5fr;
+gap: 40px;
+}
+
+.footer-logo {
+display: flex;
+flex-direction: column;
+}
+
+.footer-logo .logo-i {
+font-weight: 700;
+font-size: 24px;
+}
+
+.footer-logo .logo-name {
+color: #ffffff;
+font-weight: 700;
+font-size: 24px;
+}
+
+.brand-col p {
+font-size: 12px;
+line-height: 1.6;
+margin: 15px 0 20px 0;
+max-width: 280px;
+}
+
+.social-icons {
+display: flex;
+gap: 10px;
+}
+
+.social-icons a {
+width: 30px;
+height: 30px;
+background: #0f172a;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #ffffff;
+font-size: 12px;
+border: 1px solid #1e293b;
+transition: background 0.3s;
+}
+
+.social-icons a:hover {
+background: #1e3a8a;
+}
+
+.footer-col h4 {
+color: #ffffff;
+font-size: 13px;
+font-weight: 600;
+margin-bottom: 15px;
+}
+
+.footer-col ul {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.footer-col ul li a {
+font-size: 12px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+color: #ffffff;
+}
+
+.footer-col ul li a span {
+font-size: 10px;
+color: #475569;
+}
+
+.newsletter-col p {
+font-size: 12px;
+margin-bottom: 15px;
+line-height: 1.5;
+}
+
+.newsletter-form {
+display: flex;
+background: #0f172a;
+border: 1px solid #1e293b;
+border-radius: 6px;
+overflow: hidden;
+}
+
+.newsletter-form input {
+background: transparent;
+border: none;
+padding: 10px 12px;
+color: #ffffff;
+font-size: 10px;
+outline: none;
+width: 100%;
+}
+
+.newsletter-form button {
+background: #2563eb;
+border: none;
+color: white;
+padding: 0 15px;
+cursor: pointer;
+font-size: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 1024px) {
-.services-panel {
+.services-grid {
 grid-template-columns: repeat(2, 1fr);
+}
+.highlights-panel {
+grid-template-columns: repeat(2, 1fr);
+}
+.features-grid {
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+}
+.feature-card:not(:last-child)::after {
+display: none;
+}
+.stats-banner {
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+}
+.stat-item:not(:last-child)::after {
+display: none;
 }
 }
 
-@media (max-width: 640px) {
-.services-panel {
+@media (max-width: 900px) {
+.nav-links {
+gap: 0.85rem;
+}
+.nav-link {
+font-size: 0.75rem;
+}
+.hero-container {
+flex-direction: column;
+align-items: flex-start;
+}
+.hero-image-container {
+justify-content: flex-start;
+}
+.footer-container {
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+}
+}
+
+@media (max-width: 768px) {
+.navbar {
+flex-wrap: wrap;
+gap: 12px;
+}
+.nav-links {
+order: 3;
+width: 100%;
+gap: 1rem;
+overflow-x: auto;
+}
+.btn-touch {
+margin-left: 0;
+}
+.services-grid {
+grid-template-columns: 1fr;
+}
+.features-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.stats-banner {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+.cta-banner {
+flex-direction: column;
+gap: 1.25rem;
+align-items: flex-start;
+}
+.footer-container {
 grid-template-columns: 1fr;
 }
 }
 
-
+@media (max-width: 640px) {
+.highlights-panel {
+grid-template-columns: 1fr;
+}
+.features-grid {
+grid-template-columns: 1fr;
+}
+}
 </style>
 </head>
 <body>
 
-<!-- Header Navigation -->
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
 <header class="navbar-container">
 <nav class="navbar">
-<a href="#" class="logo"><span class="logo-i">i</span>link</a>
+<a href="#home" class="logo">
+<span><span class="logo-i">i</span>link</span>
+<span class="logo-sub">SOFTWARE &amp; IT SERVICES</span>
+</a>
+
 <ul class="nav-links">
-<li><a href="index.html" class="nav-link active">Home</a></li>
+<li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+<li><a href="#services" class="nav-link" data-section="services">Services</a></li>
+<li><a href="#why-us" class="nav-link" data-section="why-us">Why Choose iLink</a></li>
 <li><a href="about.html" class="nav-link">About Us</a></li>
-<li><a href="services.html" class="nav-link">Services</a></li>
-<li><a href="why-us.html" class="nav-link">Why Choose ilink</a></li>
-<li><a href="contact.html" class="nav-link">Contact</a></li>
 </ul>
-<a href="contact.html" class="btn-touch">
-Get in Touch <span class="arrow">↗</span>
+
+<a href="about.html#contact" class="btn-touch">
+Let's Talk
+<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
 </a>
 </nav>
 </header>
 
-<!-- Main Hero Section -->
-<section class="hero-container">
-<!-- Left Side: Text & Buttons -->
+<!-- ============================================================
+     SECTION: HOME
+     ============================================================ -->
+<section id="home" class="scroll-section hero-wrapper">
+
+<div class="hero-container">
 <div class="hero-content">
 <div class="badge-software">
-<span class="dot">•</span> SOFTWARE & IT SERVICES
+<span class="dot">&bull;</span> SOFTWARE &amp; IT SERVICES
 </div>
 
 <div class="build">
@@ -352,83 +861,355 @@ iLink delivers innovative software and IT services that help businesses grow, sc
 </p>
 
 <div class="hero-buttons">
-<a href="#" class="btn-primary">Our Services <span class="btn-arrow">&rarr;</span></a>
-<a href="#" class="btn-secondary">View Our Work <span class="btn-arrow">&rarr;</span></a>
+<a href="#services" class="btn-primary">Our Services <span class="btn-arrow">&rarr;</span></a>
+<a href="#why-us" class="btn-secondary">Why iLink <span class="btn-arrow">&rarr;</span></a>
 </div>
 </div>
 
-<!-- Right Side: Laptop Image -->
 <div class="hero-image-container">
-<img src="image.jpg" alt="iLink Software & IT Services Laptop Graphic">
+<img src="image.jpg" alt="iLink Software &amp; IT Services Laptop Graphic">
 </div>
-</section>
+</div>
 
-<!-- Services Feature Grid Section -->
-<section class="services-panel-container">
-<div class="services-panel">
+<!-- Glassmorphism highlights panel -->
+<div class="highlights-container">
+<div class="highlights-panel">
 
-<!-- Card 1: Custom Software Development -->
-<div class="service-card">
-<div class="service-icon">
+<div class="highlight-card">
+<div class="highlight-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
 <line x1="8" y1="21" x2="16" y2="21"></line>
 <line x1="12" y1="17" x2="12" y2="21"></line>
 </svg>
 </div>
-<div class="service-text">
+<div class="highlight-text">
 <h3>Custom Software Development</h3>
 <p>We build scalable, high-performance applications tailored to your business.</p>
 </div>
 </div>
 
-<!-- Card 2: Cloud & DevOps Solutions -->
-<div class="service-card">
-<div class="service-icon">
+<div class="highlight-card">
+<div class="highlight-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
 </svg>
 </div>
-<div class="service-text">
-<h3>Cloud & DevOps Solutions</h3>
+<div class="highlight-text">
+<h3>Cloud &amp; DevOps Solutions</h3>
 <p>Modernize your infrastructure and accelerate delivery with the cloud.</p>
 </div>
 </div>
 
-<!-- Card 3: Cybersecurity Services -->
-<div class="service-card">
-<div class="service-icon">
+<div class="highlight-card">
+<div class="highlight-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
 </svg>
 </div>
-<div class="service-text">
+<div class="highlight-text">
 <h3>Cybersecurity Services</h3>
 <p>Protect your business with proactive security and risk management.</p>
 </div>
 </div>
 
-<!-- Card 4: IT Consulting & Support -->
-<div class="service-card">
-<div class="service-icon">
+<div class="highlight-card">
+<div class="highlight-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4378ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <line x1="18" y1="20" x2="18" y2="10"></line>
 <line x1="12" y1="20" x2="12" y2="4"></line>
 <line x1="6" y1="20" x2="6" y2="14"></line>
 </svg>
 </div>
-<div class="service-text">
-<h3>IT Consulting & Support</h3>
+<div class="highlight-text">
+<h3>IT Consulting &amp; Support</h3>
 <p>Expert guidance and support to optimize your IT strategy.</p>
+</div>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<!-- ============================================================
+     LIGHT BODY: SERVICES + WHY US
+     ============================================================ -->
+<main class="main-container">
+
+<!-- ---------- SECTION: SERVICES ---------- -->
+<section id="services" class="scroll-section">
+<div class="section-header-center">
+<span class="section-tag-blue">WHAT WE DO</span>
+<h2>Our Services</h2>
+<div class="center-line"></div>
+<p class="section-lead">
+At iLink, we provide a wide range of software and IT services to help businesses innovate, transform and grow in the digital era.
+</p>
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+</div>
+<h3>Custom Software Development</h3>
+<div class="card-line"></div>
+<p>We build custom software solutions tailored to your business needs to streamline operations and drive growth.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+</div>
+<h3>Web Development</h3>
+<div class="card-line"></div>
+<p>Modern, responsive and high-performance websites and web applications that deliver exceptional user experiences.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+</div>
+<h3>Mobile App Development</h3>
+<div class="card-line"></div>
+<p>We create intuitive and scalable mobile applications for iOS and Android platforms.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+</div>
+<h3>Cloud &amp; DevOps Solutions</h3>
+<div class="card-line"></div>
+<p>We help you leverage the cloud to improve scalability, reliability and operational efficiency.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+</div>
+<h3>Cybersecurity Services</h3>
+<div class="card-line"></div>
+<p>Protect your business from threats with our comprehensive security solutions and best practices.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M21 19c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14"></path><path d="M21 5v14"></path></svg>
+</div>
+<h3>Database Design &amp; Management</h3>
+<div class="card-line"></div>
+<p>We design, implement and manage secure and efficient databases that power your applications.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+</div>
+<h3>IT Consulting</h3>
+<div class="card-line"></div>
+<p>Get expert advice and strategic guidance to align your technology with your business goals.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+</div>
+<h3>IT Support &amp; Maintenance</h3>
+<div class="card-line"></div>
+<p>We provide ongoing support and maintenance to keep your systems running smoothly.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ---------- SECTION: WHY CHOOSE ILINK ---------- -->
+<section id="why-us" class="scroll-section">
+<div class="section-header-center">
+<span class="section-tag-blue">THE ILINK DIFFERENCE</span>
+<h2>Why Choose iLink</h2>
+<div class="center-line"></div>
+<p class="section-lead">
+We go beyond coding. We partner with businesses to understand their goals, overcome challenges and deliver solutions that drive real results.
+</p>
+</div>
+
+<div class="features-grid">
+
+<div class="feature-card">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+</div>
+<h3>Client Focused</h3>
+<p>We put your business first. Your success is our top priority.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+</div>
+<h3>Quality &amp; Reliability</h3>
+<p>We deliver high-quality solutions that are secure, scalable and reliable.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+</div>
+<h3>Innovation Driven</h3>
+<p>We use the latest technologies and creative thinking to build better solutions.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+</div>
+<h3>On-Time Delivery</h3>
+<p>We value your time and are committed to delivering projects on schedule.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+</div>
+<h3>Cost Effective</h3>
+<p>We provide smart solutions that deliver maximum value within your budget.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+</div>
+<h3>Ongoing Support</h3>
+<p>Our relationship doesn't end with delivery. We're here to support your growth.</p>
+</div>
+
+</div>
+
+<!-- Dark stats banner -->
+<div class="stats-banner">
+
+<div class="stat-item">
+<div class="stat-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+</div>
+<div class="stat-info">
+<h3>30+</h3>
+<div class="stat-label">Happy Clients</div>
+<div class="stat-desc">Across different industries</div>
+</div>
+</div>
+
+<div class="stat-item">
+<div class="stat-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+</div>
+<div class="stat-info">
+<h3>50+</h3>
+<div class="stat-label">Projects Completed</div>
+<div class="stat-desc">Successfully delivered</div>
+</div>
+</div>
+
+<div class="stat-item">
+<div class="stat-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+</div>
+<div class="stat-info">
+<h3>5+</h3>
+<div class="stat-label">Years of Experience</div>
+<div class="stat-desc">In delivering IT solutions</div>
+</div>
+</div>
+
+<div class="stat-item">
+<div class="stat-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+</div>
+<div class="stat-info">
+<h3>24/7</h3>
+<div class="stat-label">Support</div>
+<div class="stat-desc">We're here when you need us</div>
 </div>
 </div>
 
 </div>
 </section>
 
+<!-- ---------- CTA BANNER ---------- -->
+<div class="cta-banner">
+<div class="cta-left">
+<div class="cta-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+</div>
+<div>
+<h3>Need a solution for your business?</h3>
+<p>Let's discuss how iLink can help you achieve your goals.</p>
+</div>
+</div>
+<a href="about.html#contact" class="btn-touch">
+Get in Touch
+<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+</a>
+</div>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-col brand-col">
+<div class="footer-logo">
+<div><span class="logo-i">i</span><span class="logo-name">Link</span></div>
+<span class="logo-sub">SOFTWARE &amp; IT SERVICES</span>
+</div>
+<p>We provide innovative software and IT solutions to help businesses grow, transform and succeed in the digital era.</p>
+<div class="social-icons">
+<a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="#home">Home <span>&gt;</span></a></li>
+<li><a href="#services">Services <span>&gt;</span></a></li>
+<li><a href="#why-us">Why Choose iLink <span>&gt;</span></a></li>
+<li><a href="about.html">About Us <span>&gt;</span></a></li>
+<li><a href="about.html#contact">Contact <span>&gt;</span></a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>Our Services</h4>
+<ul>
+<li><a href="#services">Web Development</a></li>
+<li><a href="#services">Custom Software</a></li>
+<li><a href="#services">Mobile App Development</a></li>
+<li><a href="#services">Cloud &amp; DevOps</a></li>
+<li><a href="#services">IT Consulting</a></li>
+<li><a href="#services">Cybersecurity</a></li>
+</ul>
+</div>
+
+<div class="footer-col newsletter-col">
+<h4>Newsletter</h4>
+<p>Subscribe to get updates and insights delivered to your inbox.</p>
+<form class="newsletter-form">
+<input type="email" placeholder="Your email address" aria-label="Your email address">
+<button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+</form>
+</div>
+</div>
+</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
