@@ -9,19 +9,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   PAGE WIDTH
-   One place to tune how much of the browser the site fills.
-   --page-pad scales with the viewport, so margins breathe on
-   wide monitors and tighten up on phones.
-   ============================================================ */
+PAGE WIDTH
+One place to tune how much of the browser the site fills.
+--page-pad scales with the viewport, so margins breathe on
+wide monitors and tighten up on phones.
+============================================================ */
 :root {
 --page-max: 1600px;
 --page-pad: clamp(1.25rem, 4vw, 3.5rem);
 }
 
 /* ============================================================
-   RESET & BASE
-   ============================================================ */
+RESET & BASE
+============================================================ */
 * {
 margin: 0;
 padding: 0;
@@ -52,8 +52,8 @@ scroll-margin-top: 90px;
 }
 
 /* ============================================================
-   NAVBAR (shared with about.html)
-   ============================================================ */
+NAVBAR (shared with about.html)
+============================================================ */
 .navbar-container {
 background-color: #050c1a;
 padding: 1.2rem var(--page-pad);
@@ -154,8 +154,8 @@ height: 14px;
 }
 
 /* ============================================================
-   HOME — DARK HERO
-   ============================================================ */
+HOME — DARK HERO
+============================================================ */
 .hero-wrapper {
 background-color: #050716;
 color: #ffffff;
@@ -262,12 +262,56 @@ display: flex;
 justify-content: flex-end;
 }
 
-.hero-image-container img {
+/* Wrapper for glowing & binary elements behind the laptop image */
+.hero-laptop-wrapper {
+position: relative;
 width: 100%;
 max-width: 780px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* Radial Glow behind laptop */
+.laptop-glow {
+position: absolute;
+width: 80%;
+height: 80%;
+background: radial-gradient(circle, rgba(67, 120, 255, 0.45) 0%, rgba(37, 99, 235, 0.15) 50%, transparent 75%);
+filter: blur(50px);
+border-radius: 50%;
+z-index: 1;
+pointer-events: none;
+animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+0% { opacity: 0.6; transform: scale(0.95); }
+100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Binary Canvas Behind Laptop */
+#binary-canvas {
+position: absolute;
+top: -20%;
+left: -20%;
+width: 140%;
+height: 140%;
+z-index: 2;
+opacity: 0.85;
+pointer-events: none;
+mask-image: radial-gradient(circle, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%);
+-webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%);
+}
+
+.hero-image-container img {
+position: relative;
+z-index: 3;
+width: 100%;
 height: auto;
 display: block;
 object-fit: contain;
+filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
 }
 
 /* ---- Glassmorphism highlights panel (4 items, inside the dark hero) ---- */
@@ -328,8 +372,8 @@ font-weight: 400;
 }
 
 /* ============================================================
-   LIGHT PAGE BODY (Services + Why Us)
-   ============================================================ */
+LIGHT PAGE BODY (Services + Why Us)
+============================================================ */
 .main-container {
 max-width: var(--page-max);
 margin: 0 auto;
@@ -598,8 +642,8 @@ font-size: 0.85rem;
 }
 
 /* ============================================================
-   FOOTER (shared with about.html)
-   ============================================================ */
+FOOTER (shared with about.html)
+============================================================ */
 .footer {
 background-color: #030712;
 color: #94a3b8;
@@ -726,8 +770,8 @@ font-size: 10px;
 }
 
 /* ============================================================
-   RESPONSIVE
-   ============================================================ */
+RESPONSIVE
+============================================================ */
 @media (max-width: 1024px) {
 .services-grid {
 grid-template-columns: repeat(2, 1fr);
@@ -764,6 +808,7 @@ align-items: flex-start;
 }
 .hero-image-container {
 justify-content: flex-start;
+width: 100%;
 }
 .footer-container {
 grid-template-columns: 1fr 1fr;
@@ -818,8 +863,8 @@ grid-template-columns: 1fr;
 <body>
 
 <!-- ============================================================
-     NAVBAR
-     ============================================================ -->
+NAVBAR
+============================================================ -->
 <header class="navbar-container">
 <nav class="navbar">
 <a href="#home" class="logo">
@@ -842,8 +887,8 @@ Let's Talk
 </header>
 
 <!-- ============================================================
-     SECTION: HOME
-     ============================================================ -->
+SECTION: HOME
+============================================================ -->
 <section id="home" class="scroll-section hero-wrapper">
 
 <div class="hero-container">
@@ -867,7 +912,11 @@ iLink delivers innovative software and IT services that help businesses grow, sc
 </div>
 
 <div class="hero-image-container">
-<img src="image.jpg" alt="iLink Software &amp; IT Services Laptop Graphic">
+<div class="hero-laptop-wrapper">
+<div class="laptop-glow"></div>
+<canvas id="binary-canvas"></canvas>
+<img src="transparent.png" alt="iLink Software &amp; IT Services Laptop Graphic">
+</div>
 </div>
 </div>
 
@@ -933,8 +982,8 @@ iLink delivers innovative software and IT services that help businesses grow, sc
 </section>
 
 <!-- ============================================================
-     LIGHT BODY: SERVICES + WHY US
-     ============================================================ -->
+LIGHT BODY: SERVICES + WHY US
+============================================================ -->
 <main class="main-container">
 
 <!-- ---------- SECTION: SERVICES ---------- -->
@@ -1158,8 +1207,8 @@ Get in Touch
 </main>
 
 <!-- ============================================================
-     FOOTER
-     ============================================================ -->
+FOOTER
+============================================================ -->
 <footer class="footer">
 <div class="footer-container">
 <div class="footer-col brand-col">
@@ -1210,6 +1259,55 @@ Get in Touch
 </div>
 </footer>
 
+<!-- Binary Animation Script -->
+<script>
+const canvas = document.getElementById('binary-canvas');
+if (canvas) {
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+canvas.width = canvas.parentElement.offsetWidth * 1.4;
+canvas.height = canvas.parentElement.offsetHeight * 1.4;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Font size increased from 14 to 18 for high visibility
+const fontSize = 18;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1).map(() => Math.floor(Math.random() * -30));
+
+function drawBinary() {
+// Clear canvas with light opacity to create a clean trail
+ctx.fillStyle = 'rgba(5, 7, 22, 0.18)';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ctx.font = `bold ${fontSize}px monospace`;
+
+for (let i = 0; i < drops.length; i++) {
+const text = Math.random() > 0.5 ? '1' : '0';
+const x = i * fontSize;
+const y = drops[i] * fontSize;
+
+if (y > 0) {
+// Bright neon cyan glow for leading character, vibrant electric blue for trail
+ctx.fillStyle = Math.random() > 0.85 ? '#60a5fa' : '#3b82f6';
+ctx.fillText(text, x, y);
+}
+
+if (y > canvas.height && Math.random() > 0.975) {
+drops[i] = 0;
+}
+drops[i]++;
+}
+}
+
+setInterval(drawBinary, 40);
+}
+</script>
+
+
 <script src="script.js"></script>
 </body>
 </html>
+
