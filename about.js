@@ -15,15 +15,16 @@ navLinks.classList.toggle('active');
 }
 
 // --- 2. Contact Form Handling with EmailJS ---
-const contactForm = document.getElementById('contactForm') || document.querySelector('form');
+const contactForm = document.getElementById('contactForm') || document.querySelector('.contact-form');
 
 if (contactForm) {
 contactForm.addEventListener('submit', function (event) {
+// Stop page reload and parameter append
 event.preventDefault();
 
-const nameInput = contactForm.querySelector('input[name="name"]') || contactForm.querySelector('input[type="text"]');
-const emailInput = contactForm.querySelector('input[name="email"]') || contactForm.querySelector('input[type="email"]');
-const messageInput = contactForm.querySelector('textarea[name="message"]') || contactForm.querySelector('textarea');
+const nameInput = contactForm.querySelector('input[name="name"]');
+const emailInput = contactForm.querySelector('input[name="email"]');
+const messageInput = contactForm.querySelector('textarea[name="message"]');
 const submitBtn = contactForm.querySelector('button[type="submit"]');
 
 if (nameInput && nameInput.value.trim() === '') {
@@ -44,13 +45,12 @@ messageInput.focus();
 return;
 }
 
-const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Send';
+const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Send Message';
 if (submitBtn) {
 submitBtn.disabled = true;
 submitBtn.innerHTML = 'Sending...';
 }
 
-// Replace YOUR_SERVICE_ID with your actual EmailJS Service ID
 const serviceID = 'service_ct93l4c';
 const templateID = 'template_5euu0xa';
 
@@ -61,7 +61,7 @@ contactForm.reset();
 })
 .catch(function (error) {
 console.error('EmailJS Error:', error);
-alert('Failed to send message. Please try again or contact us directly.');
+alert('Failed to send message. Please check browser console for details.');
 })
 .finally(function () {
 if (submitBtn) {

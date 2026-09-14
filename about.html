@@ -10,18 +10,16 @@
 
 <style>
 /* ============================================================
-   PAGE WIDTH
-   One place to tune how much of the browser the site fills.
-   Keep these values in sync with index.html.
-   ============================================================ */
+PAGE WIDTH
+============================================================ */
 :root {
 --page-max: 1600px;
 --page-pad: clamp(1.25rem, 4vw, 3.5rem);
 }
 
 /* ============================================================
-   RESET & BASE
-   ============================================================ */
+RESET & BASE
+============================================================ */
 * {
 margin: 0;
 padding: 0;
@@ -51,8 +49,8 @@ scroll-margin-top: 90px;
 }
 
 /* ============================================================
-   NAVBAR (shared with index.html)
-   ============================================================ */
+NAVBAR
+============================================================ */
 .navbar-container {
 background-color: #050c1a;
 padding: 1.2rem var(--page-pad);
@@ -153,8 +151,8 @@ height: 14px;
 }
 
 /* ============================================================
-   LAYOUT
-   ============================================================ */
+LAYOUT
+============================================================ */
 .main-container {
 max-width: var(--page-max);
 margin: 0 auto;
@@ -175,8 +173,8 @@ text-transform: uppercase;
 }
 
 /* ============================================================
-   ABOUT — HERO
-   ============================================================ */
+ABOUT — HERO
+============================================================ */
 .about-hero {
 display: grid;
 grid-template-columns: 1fr 1.1fr;
@@ -193,7 +191,6 @@ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 
 .ilink-img {
 width: 100%;
-/* Grows with the wider layout so it doesn't read as a letterbox strip */
 height: clamp(320px, 32vw, 540px);
 object-fit: cover;
 display: block;
@@ -261,8 +258,8 @@ line-height: 1.4;
 }
 
 /* ============================================================
-   ABOUT — VALUES
-   ============================================================ */
+ABOUT — VALUES
+============================================================ */
 .values-section {
 background-color: #f1f5f9;
 border-radius: 8px;
@@ -318,8 +315,8 @@ line-height: 1.4;
 }
 
 /* ============================================================
-   ABOUT — STORY & STATS
-   ============================================================ */
+ABOUT — STORY & STATS
+============================================================ */
 .story-stats-section {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -380,8 +377,8 @@ line-height: 1.2;
 }
 
 /* ============================================================
-   CONTACT SECTION
-   ============================================================ */
+CONTACT SECTION
+============================================================ */
 .contact-header {
 border-top: 1px solid #e2e8f0;
 padding-top: 3rem;
@@ -613,8 +610,8 @@ color: #ffffff;
 }
 
 /* ============================================================
-   FOOTER (shared with index.html)
-   ============================================================ */
+FOOTER
+============================================================ */
 .footer {
 background-color: #030712;
 color: #94a3b8;
@@ -741,19 +738,12 @@ font-size: 10px;
 }
 
 /* ============================================================
-   RESPONSIVE
-   ============================================================ */
+RESPONSIVE
+============================================================ */
 @media (max-width: 900px) {
-.nav-links {
-gap: 0.85rem;
-}
-.nav-link {
-font-size: 0.75rem;
-}
-.footer-container {
-grid-template-columns: 1fr 1fr;
-gap: 30px;
-}
+.nav-links { gap: 0.85rem; }
+.nav-link { font-size: 0.75rem; }
+.footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
 }
 
 @media (max-width: 800px) {
@@ -766,42 +756,20 @@ grid-template-columns: repeat(2, 1fr);
 }
 
 @media (max-width: 768px) {
-.navbar {
-flex-wrap: wrap;
-gap: 12px;
-}
-.nav-links {
-order: 3;
-width: 100%;
-gap: 1rem;
-overflow-x: auto;
-}
-.btn-touch {
-margin-left: 0;
-}
-.input-row {
-flex-direction: column;
-}
-.info-cards-grid {
-grid-template-columns: 1fr;
-}
-.cta-banner {
-flex-wrap: wrap;
-}
-.btn-light {
-margin-left: 0;
-}
-.footer-container {
-grid-template-columns: 1fr;
-}
+.navbar { flex-wrap: wrap; gap: 12px; }
+.nav-links { order: 3; width: 100%; gap: 1rem; overflow-x: auto; }
+.btn-touch { margin-left: 0; }
+.input-row { flex-direction: column; }
+.info-cards-grid { grid-template-columns: 1fr; }
+.cta-banner { flex-wrap: wrap; }
+.btn-light { margin-left: 0; }
+.footer-container { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     NAVBAR
-     ============================================================ -->
+<!-- NAVBAR -->
 <header class="navbar-container">
 <nav class="navbar">
 <a href="index.html#home" class="logo">
@@ -825,9 +793,7 @@ Let's Talk
 
 <main class="main-container">
 
-<!-- ============================================================
-     SECTION: ABOUT US
-     ============================================================ -->
+<!-- ABOUT HERO -->
 <section id="about" class="scroll-section about-hero">
 <div class="hero-content">
 <span class="section-tag">ABOUT US</span>
@@ -864,7 +830,7 @@ iLink is a software and IT services company dedicated to helping businesses grow
 </div>
 </section>
 
-<!-- ---------- OUR VALUES ---------- -->
+<!-- OUR VALUES -->
 <section class="values-section">
 <div class="values-title">
 <span class="section-tag">OUR VALUES</span>
@@ -906,7 +872,7 @@ iLink is a software and IT services company dedicated to helping businesses grow
 </div>
 </section>
 
-<!-- ---------- OUR STORY & STATS ---------- -->
+<!-- OUR STORY & STATS -->
 <section class="story-stats-section">
 <div class="story-content">
 <span class="section-tag">OUR STORY</span>
@@ -946,11 +912,8 @@ iLink is a software and IT services company dedicated to helping businesses grow
 </div>
 </section>
 
-<!-- ============================================================
-     SECTION: CONTACT
-     ============================================================ -->
+<!-- CONTACT SECTION -->
 <section id="contact" class="scroll-section">
-
 <div class="contact-header">
 <span class="section-tag">CONTACT US</span>
 <h2>Let's build something <span class="highlight">great together.</span></h2>
@@ -958,13 +921,12 @@ iLink is a software and IT services company dedicated to helping businesses grow
 </div>
 
 <div class="contact-grid">
-
 <!-- LEFT: FORM -->
 <div class="form-container">
 <span class="section-tag">SEND US A MESSAGE</span>
 <h3>We'd love to hear from you.</h3>
 
-<form class="contact-form">
+<form id="contactForm" class="contact-form">
 <div class="input-row">
 <div class="input-group">
 <i class="fa-regular fa-user"></i>
@@ -1047,15 +1009,12 @@ Send Message <i class="fa-solid fa-paper-plane"></i>
 <a href="mailto:info@ilink.ao" class="btn-light">Email Us <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 </div>
 </div>
-
 </div>
 </section>
 
 </main>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- FOOTER -->
 <footer class="footer">
 <div class="footer-container">
 <div class="footer-col brand-col">
@@ -1106,22 +1065,16 @@ Send Message <i class="fa-solid fa-paper-plane"></i>
 </div>
 </footer>
 
-
 <!-- EmailJS SDK -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
 (function() {
-// Replace YOUR_PUBLIC_KEY with your EmailJS Public Key
 emailjs.init("3Lq5Cu6BRYxZtAhFu");
 })();
 </script>
 
-<!-- JS Scripts -->
-<script src="script.js"></script>
+<!-- Script setup: Load about.js only -->
 <script src="about.js"></script>
 </body>
 </html>
 
-
-</body>
-</html>
